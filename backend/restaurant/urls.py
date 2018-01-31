@@ -3,6 +3,7 @@ from django.conf.urls import url, include
 from .apis import (
     MenuRetrieveAPI,
     ItemListAPI,
+    MenuSectionRetrieveAPI,
 
     OrderCreateAPI,
     PayOrderAPI,
@@ -39,6 +40,11 @@ urlpatterns = [
         regex=r'^items/$',
         view=ItemListAPI.as_view(),
         name='item-list'
+    ),
+    url(
+        regex=r'^menu-section/(?P<menu_section_id>[0-9]+)/$',
+        view=MenuSectionRetrieveAPI.as_view(),
+        name='menu-section-retrieve'
     ),
     url(
         regex=r'^order/',

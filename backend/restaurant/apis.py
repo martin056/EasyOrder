@@ -5,11 +5,12 @@ from rest_framework import status
 
 from django.shortcuts import get_object_or_404
 
-from .models import Menu, Item, Order
+from .models import Menu, Item, Order, MenuSection
 from .serializers import (
     MenuSerializer,
     ItemSerializer,
     OrderSerializer,
+    MenuSectionSerializer,
 
     OrderCreateSerializer,
 )
@@ -26,6 +27,12 @@ class MenuRetrieveAPI(RetrieveAPIView):
 class ItemListAPI(ListAPIView):
     serializer_class = ItemSerializer
     queryset = Item.objects.filter(is_active=True).select_related('menu_section', 'menu_section__menu')
+
+
+class MenuSectionRetrieveAPI(RetrieveAPIView):
+    serializer_class = MenuSectionSerializer
+    lookup_url_kwarg = 'menu_section_id'
+    queryset = MenuSection.objects.prefetch_related('items')
 
 
 class OrderCreateAPI(ServiceExceptionHandlerMixin, APIView):
