@@ -30,7 +30,7 @@
 
 </head>
 <body>
-  <div ng-controller="AppCtrl">
+<div ng-controller="AppCtrl">
   <div class="site-branding-area">
     <div class="container">
         <div class="row">
@@ -42,7 +42,7 @@
             
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a ui-sref="cart">Cart - <span class="cart-amunt"></span>{{total}} BGN<i class="fa fa-shopping-cart"></i> <span class="product-count">{{order.length}}</span></a>
+                    <a ui-sref="cart">Поръчка - <span class="cart-amunt"></span>{{(total | number:2)*1}} BGN<i class="fa fa-shopping-cart"></i> <span class="product-count">{{order.length}}</span></a>
                 </div>
             </div>
         </div>
@@ -53,20 +53,21 @@
     <div class="container">
         <div class="row">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                <ul class="navbar-toggle responsiveMenu" data-toggle="collapse" data-target=".navbar-collapse" style="list-style-type: none">
+                    <li><a ui-sref="salads">Салати</a></li>
+                    <li><a ui-sref="pizzas">Пици</a></li>
+                    <li><a ui-sref="meats">Месни ястия</a></li>
+                    <li><a ui-sref="pasta">Паста</a></li>
+                    <li><a ui-sref="drinks">Напитки</a></li>
+                </ul>
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a ui-sref="salads">Salads</a></li>
-                    <li><a ui-sref="pizzas">Pizza</a></li>
-                    <li><a ui-sref="meats">Meat</a></li>
-                    <li><a ui-sref="desserts">Desserts</a></li>
-                    <li><a ui-sref="drinks">Drinks</a></li>
+                    <li><a ui-sref="salads">Салати</a></li>
+                    <li><a ui-sref="pizzas">Пици</a></li>
+                    <li><a ui-sref="meats">Месни ястия</a></li>
+                    <li><a ui-sref="pasta">Паста</a></li>
+                    <li><a ui-sref="drinks">Напитки</a></li>
                 </ul>
             </div>  
         </div>
@@ -88,22 +89,18 @@
 </div>
 </div>
 
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="app.js"></script>
   <script src="app.config.js"></script>
-  <script src="csrf.js"></script>
+  <script src="config.js"></script>
   <script src="home/home.js"></script>
   <script src="pizzas/pizzas.js"></script>
   <script src="salads/salads.js"></script>
   <script src="meats/meats.js"></script>
-  <script src="desserts/desserts.js"></script>
+  <script src="pasta/pasta.js"></script>
   <script src="drinks/drinks.js"></script>
   <script src="cart/cart.js"></script>
   <script src="services/backend.service.js"></script>

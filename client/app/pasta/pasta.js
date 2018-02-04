@@ -2,7 +2,7 @@
 
 angular
   .module('easyOrder')
-  .controller('meatsCtrl', ['$scope','$state', '$rootScope', '$stateParams', 'menuService', function($scope, $state,$rootScope, $stateParams, menuService) {
+  .controller('pastaCtrl', ['$scope','$state', '$rootScope', '$stateParams', 'menuService', function($scope, $state,$rootScope, $stateParams, menuService) {
   
     var vm = this;
     vm.getMenu = $scope.getMenu;
@@ -11,7 +11,7 @@ angular
     getMenu();
 
    function getMenu() {
-      menuService.getMenu(5)
+      menuService.getMenu(3)
         .then(function (response) {
           for (var i = 0; i < response.items.length; i++) {
             response.items[i].quantity = 1;
@@ -21,18 +21,8 @@ angular
         .catch(function (response) {
           console.log(response);
         });
-
-        menuService.getMenu(6)
-        .then(function (response) {
-          for (var i = 0; i < response.items.length; i++) {
-            response.items[i].quantity = 1;
-            $scope.items.push(response.items[i]);
-          }
-        })
-        .catch(function (response) {
-          console.log(response);
-        });
     };
+
 
   $scope.isItemInOrder = function(item) {
     for (var i = 0; i < $rootScope.order.length; i++) {

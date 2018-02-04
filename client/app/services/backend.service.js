@@ -6,7 +6,7 @@
 
     function backendService() {
 
-        var _SERVER = 'http://localhost:8000';
+        var _SERVER = 'http://127.0.0.1:8000';
 
         var service = {
             backendUrl: backendUrl

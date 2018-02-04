@@ -1051,3 +1051,10 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
   .img__wrap:hover .img__description {
     transform: translateY(0);
   }
+
+  .responsiveMenu > li > a {
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+  }
+  

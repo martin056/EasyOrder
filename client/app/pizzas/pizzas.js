@@ -10,20 +10,13 @@
 
     getMenu();
 
-    // $scope.getMenu = function() {
-    //   menuService.getMenu(4)
-    //     .then(function (response) {
-    //       $scope.items = response;
-    //     })
-    //     .catch(function (response) {
-    //       console.log(response);
-    //     });
-    // };
-
    function getMenu() {
       menuService.getMenu(4)
         .then(function (response) {
-          $scope.items = response;
+          for (var i = 0; i < response.items.length; i++) {
+            response.items[i].quantity = 1;
+          }
+          $scope.items = response.items;
         })
         .catch(function (response) {
           console.log(response);
@@ -52,8 +45,7 @@
       } else {
         $rootScope.order.push(angular.copy(item));
       }
-      console.log($rootScope.order);  
-      alert('Item was added to the order');
+      alert('Успешно добавихте към поръчката!');
     };
 
 

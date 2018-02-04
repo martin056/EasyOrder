@@ -5,13 +5,14 @@ angular
   .controller('cartCtrl', ['$scope','$state', '$rootScope', '$stateParams', 'orderService', function($scope, $state,$rootScope, $stateParams, orderService) {
   
   $scope.items = $rootScope.order;
+  $scope.isUserChoosing = $rootScope.isUserChoosing;
   $scope.tableNumber = "";
   $scope.errorText = "";
 
 
   $scope.validateTableNumber = function() {
     if (!parseInt($scope.tableNumber)) {
-        $scope.errorText += 'Invalid table number! ';
+        $scope.errorText += 'Невалиден номер на маса! ';
         return false;
     };
     return true;
@@ -19,7 +20,7 @@ angular
 
   $scope.validateCart = function() {
     if ($scope.items.length == 0) {
-        $scope.errorText += 'Your order is empty! ';
+        $scope.errorText += 'Вашата поръчка е празна!' ;
         return false; 
     }
     return true;
@@ -28,12 +29,21 @@ angular
   $scope.makeOrder = function() {
     if ($scope.validateCart() && $scope.validateTableNumber()) {
         $scope.errorText = '';
-        orderService.makeOrder($scope.items, $scope.tableNumber)
+        var parsedItems = [];
+        for (var i = 0; i < $scope.items.length; i++) {
+          parsedItems.push({
+            item: $scope.items[i].id,
+            quantity: $scope.items[i].quantity
+          })
+        }
+        orderService.makeOrder(parsedItems, $scope.tableNumber)
         .then(function (response) {
-            console.log(response);
+            alert("Успешно направихте поръчка!");
+            $scope.isUserChoosing = false;
+            $rootScope.isUserChoosing = false;
         })
         .catch(function (response) {
-            console.log(response);
+            alert('Неуспешна заявка за поръчка');
         });
         }
     else {
@@ -51,22 +61,9 @@ angular
     return false;
   }
 
-  $scope.addToOrder = function(item) {
-    // $scope.item.quantity = item.quantity;
-    $rootScope.total += item.price * item.quantity;
-    if ($scope.isItemInOrder(item)) {
-      for (var i = 0; i < $rootScope.order.length; i++) {
-        if ($rootScope.order[i].id == item.id) {
-          $rootScope.order[i].quantity += item.quantity;
-        }
-      }
-    } else {
-      $rootScope.order.push(angular.copy(item));
-    }
-    console.log($rootScope.order);  
-    alert('Item was added to the order');
+  $scope.removeFromOrder = function(item) {
+    var index = $rootScope.order.indexOf(item);
+    $rootScope.order.splice(index, 1);
+    $rootScope.total -= item.price * item.quantity;   
   };
-
-
-
 }]);

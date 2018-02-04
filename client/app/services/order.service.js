@@ -18,11 +18,15 @@
             var deferred = $q.defer();
             $http({
                 method: 'POST',
-                url: backendService.backendUrl() + '/api/order/create',
+                url: backendService.backendUrl() + '/api/order/create/',
                 data: {
                     "items": items,
-                    "tableNumber": tableNumber
-                }
+                    "table": tableNumber
+                },
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true
             }).then(function successCallback(response) {
                 deferred.resolve(response.data);
             }, function errorCallback(error) {

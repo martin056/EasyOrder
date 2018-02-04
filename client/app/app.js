@@ -35,11 +35,11 @@
           controllerAs: 'meatsCtrl'
         })
         .state({
-          name: 'desserts',
-          url: '/desserts',
-          templateUrl: 'desserts/desserts.html',
-          controller: 'dessertsCtrl',
-          controllerAs: 'dessertsCtrl'
+          name: 'pasta',
+          url: '/pasta',
+          templateUrl: 'pasta/pasta.html',
+          controller: 'pastaCtrl',
+          controllerAs: 'pastaCtrl'
         })
         .state({
           name: 'drinks',
@@ -65,7 +65,10 @@
 
       $urlRouterProvider.otherwise('/home');
     })
-    .config(['$httpProvider', function($httpProvider) {
-      $httpProvider.defaults.withCredentials = true;
+    // .config(['$httpProvider', function($httpProvider) {
+    //   $httpProvider.defaults.withCredentials = true;
+    // }])
+    .run(['$http', '$cookies', function($http, $cookies) {
+      $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
     }]);
 })();
