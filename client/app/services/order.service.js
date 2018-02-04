@@ -16,8 +16,6 @@
 
         function makeOrder(items, tableNumber) {
             var deferred = $q.defer();
-            console.log(items);
-            console.log(tableNumber);
             $http({
                 method: 'POST',
                 url: backendService.backendUrl() + '/api/order/create',

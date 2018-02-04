@@ -4,17 +4,26 @@
     .module('easyOrder')
     .controller('pizzasCtrl', ['$scope','$state', '$rootScope', '$stateParams', 'menuService', function($scope, $state,$rootScope, $stateParams, menuService) {
     
-    $scope.items = [
-      {id: 1, label: "pizza1", price: 100, imgUrl: "../img/slide-1.jpeg", quantity: 1},
-      {id: 2, label: "pizza2", price: 200, imgUrl: "../img/slide-1.jpeg", quantity: 1},
-      {id: 3, label: "pizza3", price: 300, imgUrl: "../img/slide-1.jpeg", quantity: 1},
-      {id: 4, label: "pizza4", price: 400, imgUrl: "../img/slide-1.jpeg", quantity: 1},
-    ]
+    var vm = this;
+    vm.getMenu = $scope.getMenu;
+    $scope.items = [];
 
-    $scope.getMenu = function() {
-      menuService.getMenu()
+    getMenu();
+
+    // $scope.getMenu = function() {
+    //   menuService.getMenu(4)
+    //     .then(function (response) {
+    //       $scope.items = response;
+    //     })
+    //     .catch(function (response) {
+    //       console.log(response);
+    //     });
+    // };
+
+   function getMenu() {
+      menuService.getMenu(4)
         .then(function (response) {
-          console.log(response);
+          $scope.items = response;
         })
         .catch(function (response) {
           console.log(response);

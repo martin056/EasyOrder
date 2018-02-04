@@ -52,7 +52,6 @@ angular
   }
 
   $scope.addToOrder = function(item) {
-    console.log(item);
     // $scope.item.quantity = item.quantity;
     $rootScope.total += item.price * item.quantity;
     if ($scope.isItemInOrder(item)) {

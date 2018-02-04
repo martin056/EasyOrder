@@ -6,4 +6,4 @@
           $rootScope.total = 0;
           $rootScope.order = [];
           
-}]);
+        }]);

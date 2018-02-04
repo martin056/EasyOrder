@@ -16,11 +16,11 @@
 
         return service;
 
-        function getMenu() {
+        function getMenu(sectionId) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: backendService.backendUrl() + '/api/items/'
+                url: backendService.backendUrl() + '/api/menu-section/' + sectionId + '/'
             }).then(function successCallback(response) {
                 deferred.resolve(response.data);
             }, function errorCallback(error) {

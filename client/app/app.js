@@ -3,7 +3,7 @@
 
   // Declare app level module which depends on views, and app/components
   angular
-    .module('easyOrder', ['ui.router'])
+    .module('easyOrder', ['ui.router', 'ngCookies'])
     .config(function ($stateProvider, $urlRouterProvider) {
       $stateProvider
       .state({
@@ -64,5 +64,8 @@
         // })
 
       $urlRouterProvider.otherwise('/home');
-    });
+    })
+    .config(['$httpProvider', function($httpProvider) {
+      $httpProvider.defaults.withCredentials = true;
+    }]);
 })();
