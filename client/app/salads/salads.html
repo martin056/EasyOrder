@@ -33,26 +33,34 @@
               </div>
           </div>
       </div>
+
       <div class="single-product-area">
           <div class="zigzag-bottom"></div>
           <div class="container">
               <div class="row">
                   <div class="col-md-3 col-sm-6" ng-repeat="item in items">
-                      <div class="single-shop-product">
-                          <div class="product-upper">
-                              <img src="{{item.imgUrl}}" alt="">
+                      <div class="single-shop-product" >
+                            <div class="img__wrap">
+                                    <img class="img__img" src="{{item.imgUrl}}" alt="" />
+                                    <div class="img__description_layer">
+                                        <div class="img__description">{{item.description}}</div>
+                                    </div>
+                              </div>
+                          <div style="height: 70px;">
+                            <div><h2>{{item.label}}</h2>
+                            </div>
                           </div>
-                          <h2>{{item.label}}</h2>
-                          <div class="product-carousel-price">
+                          <div class="row" style="margin-left: 0px">
+                            <input class="col-md-4" min="1" type="number" ng-model="item.quantity" />
+                            <div class="col-md-8" style="float: right; margin-top: 10px; font-weight: bold; text-align: right">
                               {{item.price}} BGN
-                          </div>  
-                          <input type="number" ng-model="item.quantity">
-                          </input>
+                            </div>
+                          </div>
                           <div class="product-option-shop">
                               <button class="add_to_cart_button" ng-click="addToOrder(item)">Order</button>
                           </div>                       
                       </div>
-                  </div>
+                    </div> 
               </div>
           </div>
       </div>

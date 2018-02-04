@@ -5,11 +5,13 @@ angular
   .controller('saladsCtrl', ['$scope','$state', '$rootScope', '$stateParams', 'menuService', function($scope, $state,$rootScope, $stateParams, menuService) {
   
   $scope.items = [
-    {id: 5, label: "Italian Fresh Chopped Salad With Ruccola And Tomatoes", price: 6.20, imgUrl: "../img/salad2.jpg", quantity: 1},
+    {id: 5, label: "Italian Fresh Chopped Salad With Ruccola And Tomatoes", 
+    description: "ASDADSADSAD", price: 6.20, imgUrl: "../img/salad2.jpg", quantity: 1},
     {id: 6, label: "Chicken, Gorgonzola, Pear, And Walnut Salad", price: 5.80, imgUrl: "../img/salad3.jpg", quantity: 1},
     {id: 7, label: "Blackberry & Walnut Summer Salad", price: 6.10, imgUrl: "../img/salad4.jpg", quantity: 1},
     {id: 8, label: "Kale, Grapefruit, & Avocado Detox Salad", price:4.90, imgUrl: "../img/salad5.jpg", quantity: 1},
     {id: 10, label: "Broccoli & Apple Salad", price: 6.70, imgUrl: "../img/salad6.jpg", quantity: 1},
+    {id: 11, label: "Broccoli & Apple Salad", price: 6.70, imgUrl: "../img/salad6.jpg", quantity: 1},
   ]
 
   $scope.getMenu = function() {
